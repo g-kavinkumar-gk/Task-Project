@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Image Gallery</title>
+</head>
+<body>
+    <h2>Click on any image to open it in a new page</h2>
+    
+    <!-- Multiple images -->
+    <img class="clickable-image" src="Images/image1.jpg" alt="Image 1" width="200" style="cursor:pointer;"/>
+    <img class="clickable-image" src="Images/image1.png" alt="Image 2" width="200" style="cursor:pointer;"/>
+    <img class="clickable-image" src="Images/image1.jpg" alt="Image 3" width="200" style="cursor:pointer;"/>
+    
+    <script>
+        // Select all images with the class 'clickable-image'
+        const images = document.querySelectorAll('.clickable-image');
+        
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                const src = img.src;
+                // Open display.html in a new tab with src as URL parameter
+                const url = `display.html?img=${encodeURIComponent(src)}`;
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

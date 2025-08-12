@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Display Image</title>
+</head>
+<body>
+    <h2>Selected Image</h2>
+    <div id="image-container"></div>
+
+    <script>
+        // Utility function to get query parameter value by name
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        // Get the 'img' query parameter, which is the image src URL
+        const imgSrc = getQueryParam('img');
+
+        const container = document.getElementById('image-container');
+
+        if (imgSrc) {
+            // Create image element and set its source dynamically
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.style.maxWidth = '90%';
+            img.style.height = 'auto';
+            img.alt = 'Opened Image';
+
+            container.appendChild(img);
+        } else {
+            container.textContent = "No image source provided in URL.";
+        }
+    </script>
+</body>
+</html>
